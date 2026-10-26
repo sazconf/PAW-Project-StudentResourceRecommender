@@ -1,0 +1,17 @@
+<button class="chatbot-launcher" type="button" aria-label="Open Study Assistant" aria-controls="chatbotPanel" aria-expanded="false" title="Study Assistant">
+  <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+</button>
+<section class="chatbot-panel" id="chatbotPanel" aria-label="Study Assistant" hidden>
+  <header class="chatbot-header">
+    <div><strong>Study Assistant</strong><small>Frontend-only helper</small></div>
+    <button class="chatbot-close" type="button" aria-label="Close Study Assistant"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  </header>
+  <div class="chatbot-messages" aria-live="polite">
+    <p class="chatbot-empty">Ask about how to use SSR. An AI service is not connected yet.</p>
+  </div>
+  <form class="chatbot-form">
+    <label class="visually-hidden" for="chatbotInput">Message</label>
+    <input id="chatbotInput" class="form-control" type="text" placeholder="Type a message..." autocomplete="off">
+    <button class="btn btn-primary" type="submit" aria-label="Send message"><i class="bi bi-send" aria-hidden="true"></i></button>
+  </form>
+</section>

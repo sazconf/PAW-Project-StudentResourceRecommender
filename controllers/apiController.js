@@ -1,3 +1,8 @@
+const {
+  getRecommendations,
+  getSampleResources
+} = require('../utils/recommendationService');
+
 function getStatus(request, response) {
   response.json({
     status: 'ok',
@@ -7,53 +12,38 @@ function getStatus(request, response) {
 
 function getProducts(request, response) {
   // Temporary fictional records for the Week 7 foundation; no database is used yet.
-  const sampleResources = [
-    {
-      id: 1,
-      title: 'Algebra Foundations Lab',
-      description: 'A guided practice set for equations, expressions, and variables.',
-      subject: 'Mathematics',
-      difficulty: 'Beginner',
-      url: 'https://example.com/ssr/algebra-foundations'
-    },
-    {
-      id: 2,
-      title: 'Web Layout Essentials',
-      description: 'Learn the core ideas behind semantic HTML and responsive CSS layouts.',
-      subject: 'Web Development',
-      difficulty: 'Beginner',
-      url: 'https://example.com/ssr/web-layout-essentials'
-    },
-    {
-      id: 3,
-      title: 'JavaScript Problem Solving',
-      description: 'Build confidence with functions, arrays, and practical debugging exercises.',
-      subject: 'Programming',
-      difficulty: 'Intermediate',
-      url: 'https://example.com/ssr/javascript-problem-solving'
-    },
-    {
-      id: 4,
-      title: 'Data Structures in Practice',
-      description: 'Explore how common data structures support efficient programs.',
-      subject: 'Computer Science',
-      difficulty: 'Advanced',
-      url: 'https://example.com/ssr/data-structures-practice'
-    },
-    {
-      id: 5,
-      title: 'Academic Writing Toolkit',
-      description: 'A practical resource for planning, drafting, and revising assignments.',
-      subject: 'Academic Skills',
-      difficulty: 'Intermediate',
-      url: 'https://example.com/ssr/academic-writing-toolkit'
-    }
-  ];
+  response.json(getSampleResources());
+}
 
-  response.json(sampleResources);
+function getPersonalizedRecommendations(request, response) {
+  const history = request.body && request.body.history;
+
+  if (history !== undefined && !Array.isArray(history)) {
+    return response.status(400).json({
+      status: 'error',
+      message: 'history must be an array'
+    });
+  }
+
+  if (Array.isArray(history) && history.length > 20) {
+    return response.status(400).json({
+      status: 'error',
+      message: 'history may contain at most 20 searches'
+    });
+  }
+
+  const recommendations = getRecommendations(Array.isArray(history) ? history : []);
+
+  return response.json({
+    status: 'ok',
+    personalized: Array.isArray(history) && history.length > 0,
+    source: 'temporary-sample-data',
+    recommendations
+  });
 }
 
 module.exports = {
   getStatus,
-  getProducts
+  getProducts,
+  getPersonalizedRecommendations
 };

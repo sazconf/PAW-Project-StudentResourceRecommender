@@ -1,0 +1,22 @@
+<%- include('partials/layoutStart') %>
+<main class="page-container">
+  <header class="page-header">
+    <div><span class="eyebrow">RESOURCE LIBRARY</span><h1>Find Learning Resources</h1><p>Get personalized learning resources based on your subject, keyword and difficulty level.</p></div>
+  </header>
+  <section class="soft-card filters-card" aria-label="Resource search filters">
+    <form id="resourceFilterForm" class="resource-search-form" action="/resources" method="get">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-3"><label class="form-label" for="resourceSubject">Subject</label><select class="form-select" id="resourceSubject" name="subject"><option value="">Any subject</option><option>Mathematics</option><option>Web Development</option><option>Programming</option><option>Computer Science</option><option>Academic Skills</option></select></div>
+        <div class="col-md-4"><label class="form-label" for="resourceKeyword">Keyword or Topic</label><input class="form-control" id="resourceKeyword" name="keyword" type="search" placeholder="e.g. algebra"></div>
+        <div class="col-md-3"><label class="form-label" for="resourceDifficulty">Difficulty Level</label><select class="form-select" id="resourceDifficulty" name="difficulty"><option value="">Any level</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+        <div class="col-md-2"><button class="btn btn-primary w-100" type="submit"><i class="bi bi-search me-1"></i>Search</button></div>
+      </div>
+    </form>
+  </section>
+  <div id="resourceLoading" class="state-card" hidden><span class="spinner-border spinner-border-sm me-2"></span>Loading resources...</div>
+  <div id="resourceError" class="alert alert-danger" role="alert" hidden>We could not load resources. Please try again.</div>
+  <div class="results-toolbar"><strong id="resultCount">Loading resources...</strong><label class="sort-control">Sort by: <select id="sortResources" class="form-select form-select-sm"><option value="relevance">Relevance</option><option value="title">Title</option><option value="difficulty">Difficulty</option></select></label></div>
+  <div id="resourceResults" class="resource-list"></div>
+  <%- include('partials/footer') %>
+</main>
+<%- include('partials/layoutEnd', { pageScript: '/js/resources.js' }) %>

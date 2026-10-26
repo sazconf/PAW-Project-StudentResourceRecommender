@@ -1,0 +1,21 @@
+<aside class="ssr-sidebar" id="mainSidebar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"><i class="bi bi-book"></i></div>
+    <div class="brand-name">Smart Student</div>
+    <div class="brand-subtitle">Resource Recommender</div>
+  </div>
+  <nav class="sidebar-nav" aria-label="Main navigation">
+    <a class="sidebar-link <%= activePage === 'home' ? 'active' : '' %>" href="/">
+      <i class="bi bi-house-door" aria-hidden="true"></i><span>Home</span>
+    </a>
+    <a class="sidebar-link <%= activePage === 'resources' ? 'active' : '' %>" href="/resources">
+      <i class="bi bi-search" aria-hidden="true"></i><span>Find Resources</span>
+    </a>
+    <a class="sidebar-link <%= activePage === 'history' ? 'active' : '' %>" href="/history">
+      <i class="bi bi-clock-history" aria-hidden="true"></i><span>Search History</span>
+    </a>
+  </nav>
+</aside>
+<button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-controls="mainSidebar" aria-expanded="false">
+  <i class="bi bi-list" aria-hidden="true"></i>
+</button>

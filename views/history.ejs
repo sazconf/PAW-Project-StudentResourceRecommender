@@ -1,0 +1,13 @@
+<%- include('partials/layoutStart') %>
+<main class="page-container">
+  <header class="page-header history-heading"><div><span class="eyebrow">YOUR ACTIVITY</span><h1>Search History</h1><p>View and reuse your previous searches. Your search history is stored only in this browser.</p></div><button id="clearHistory" class="btn btn-outline-danger"><i class="bi bi-trash3 me-2"></i>Clear History</button></header>
+  <section class="info-banner"><i class="bi bi-clock-history banner-icon"></i><div><strong>Quickly access your previous searches</strong><p>Click “Search again” to reuse a search or use the menu to delete it.</p></div></section>
+  <section class="history-table-wrap">
+    <div id="historyEmpty" class="state-card" hidden><i class="bi bi-clock-history empty-icon"></i><h2>No search history yet</h2><p>Your completed searches will appear here.</p><a class="btn btn-primary" href="/resources">Find a resource</a></div>
+    <div class="table-responsive" id="historyTableContainer">
+      <table class="table history-table"><caption class="visually-hidden">Local search history</caption><thead><tr><th scope="col">#</th><th scope="col">Search Details</th><th scope="col">Date &amp; Time</th><th scope="col" class="text-end">Actions</th></tr></thead><tbody id="historyRows"></tbody></table>
+    </div>
+  </section>
+  <%- include('partials/footer') %>
+</main>
+<%- include('partials/layoutEnd', { pageScript: '/js/history.js' }) %>
