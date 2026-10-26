@@ -1,0 +1,29 @@
+:root {
+  --ssr-primary: #2355a0;
+}
+
+body {
+  color: #1f2937;
+}
+
+.bg-primary {
+  background-color: var(--ssr-primary) !important;
+}
+
+.btn-primary {
+  background-color: var(--ssr-primary);
+  border-color: var(--ssr-primary);
+}
+
+.hero-section {
+  padding: 2rem 0 1rem;
+}
+
+.intro-text {
+  max-width: 650px;
+}
+
+.empty-state {
+  background-color: #fff;
+  border: 1px dashed #b6c2d2;
+}

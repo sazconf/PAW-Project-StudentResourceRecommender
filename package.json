@@ -1,0 +1,20 @@
+{
+  "name": "smart-student-resource-recommender",
+  "version": "1.0.0",
+  "description": "Week 7 foundation for the Smart Student Resource Recommender",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
