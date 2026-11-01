@@ -90,3 +90,9 @@ app.js                  Express application entry point
 ## Available command
 
 - `npm run dev` - Start the server with Nodemon for development.
+
+## API demonstration
+
+The following screenshot shows a successful `POST /biodata` request and JSON response in Postman:
+
+![Postman API response](public/images/postman-api-response.png)
