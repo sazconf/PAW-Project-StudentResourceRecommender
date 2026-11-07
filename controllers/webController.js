@@ -24,8 +24,16 @@ function renderHistoryPage(request, response) {
   });
 }
 
+function renderManagePage(request, response) {
+  response.render('manage', {
+    pageTitle: 'Manage Resources',
+    activePage: 'manage'
+  });
+}
+
 module.exports = {
   renderHomePage,
   renderResourcesPage,
-  renderHistoryPage
+  renderHistoryPage,
+  renderManagePage
 };

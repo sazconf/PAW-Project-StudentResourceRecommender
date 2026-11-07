@@ -59,7 +59,7 @@
       render(payload.recommendations);
     } catch (recommendationError) {
       try {
-        const fallbackResponse = await fetch('/api/produk');
+        const fallbackResponse = await fetch('/api/resources');
         if (!fallbackResponse.ok) throw new Error('Fallback request failed');
         render(await fallbackResponse.json());
       } catch (fallbackError) {
