@@ -10,6 +10,7 @@
     "test": "node test/verify.js",
     "test:gemini": "node test/gemini.test.js",
     "test:gemini:integration": "node test/gemini.integration.js",
+    "test:chat": "node test/chat.test.js",
     "test:context": "node test/context.test.js"
   },
   "keywords": [],

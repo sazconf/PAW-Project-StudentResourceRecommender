@@ -6,6 +6,7 @@ const requestLogger = require('./middlewares/requestLogger');
 const errorHandler = require('./middlewares/errorHandler');
 const webRoutes = require('./routes/webRoutes');
 const apiRoutes = require('./routes/apiRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.use(requestLogger);
 
 app.use('/', webRoutes);
 app.use('/api', apiRoutes);
+app.use('/api', chatRoutes);
 
 app.use(errorHandler);
 
