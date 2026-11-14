@@ -7,11 +7,14 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "db:init": "node database/initDb.js",
-    "test": "node test/verify.js"
+    "test": "node test/verify.js",
+    "test:gemini": "node test/gemini.test.js",
+    "test:gemini:integration": "node test/gemini.integration.js"
   },
   "keywords": [],
   "type": "commonjs",
   "dependencies": {
+    "@google/genai": "^2.32.0",
     "dotenv": "^18.0.9",
     "ejs": "^7.0.2",
     "express": "^5.3.0",

@@ -6,7 +6,7 @@ A web application built with **Node.js, Express, EJS, and PostgreSQL** designed 
 
 ## Weekly Implementation Breakdown
 
-This project has been developed incrementally over two milestones:
+This project has been developed incrementally over three milestones:
 
 ### Week 7 — Express MVC Foundation & Frontend Discovery
 
@@ -61,6 +61,67 @@ The goal of Week 8 was to transition from temporary mock data to a persistent **
   - Personalized Recommendations (`/`) dynamically scores live database records.
 - **Automated Verification Suite (`test/verify.js`):**
   - 11 comprehensive automated tests checking DB connection, all CRUD API operations, query filtering, validation errors, and view rendering (`npm test`).
+
+---
+
+### Week 9 — Google Gemini API Integration (Member 1)
+
+The goal of Week 9 (Member 1) was to integrate the **Google Gemini API** as a reusable AI service layer for the SSR chatbot:
+
+- **Gemini SDK Configuration (`config/gemini.js`):**
+  - Initialized the official `@google/genai` SDK with environment-based API key.
+  - Validates the `GEMINI_API_KEY` on startup with descriptive error messages.
+  - Exports a reusable `createGeminiClient()` function.
+  - Keeps the model name configurable via `GEMINI_MODEL` environment variable.
+- **Reusable Gemini Service (`services/gemini.service.js`):**
+  - Provides `generateGeminiResponse({ message, systemInstruction, context })`.
+  - Accepts a user message, system instruction, and application context as parameters.
+  - Handles API errors with classified error types: `CONFIGURATION_ERROR`, `AUTHENTICATION_ERROR`, `RATE_LIMIT_ERROR`, `NETWORK_ERROR`, `MODEL_ERROR`, `EMPTY_RESPONSE`, and `API_ERROR`.
+  - Independent of Express controllers and frontend code — designed for Member 2 and Member 3 to integrate.
+- **Automated Unit Tests (`test/gemini.test.js`):**
+  - 11 mocked tests validating configuration, input validation, exports, and security. No real API calls required.
+- **Manual Integration Test (`test/gemini.integration.js`):**
+  - Sends real requests to the Gemini API for end-to-end verification (requires a valid API key).
+
+---
+
+## Google Gemini API Setup
+
+### Obtaining a Gemini API Key
+
+1. Visit [Google AI Studio](https://aistudio.google.com/apikey).
+2. Sign in with your Google account.
+3. Click **"Create API Key"** and copy the generated key.
+
+### Configuring Gemini
+
+Add the following variables to your `.env` file:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-3.5-flash-lite
+```
+
+| Variable | Required | Description |
+|---|---|---|
+| `GEMINI_API_KEY` | Yes | Your Google Gemini API key from AI Studio |
+| `GEMINI_MODEL` | No | The Gemini model to use (defaults to `gemini-3.5-flash-lite`) |
+
+> **Security:** The API key is loaded from environment variables only. It is never hardcoded, logged, or exposed in frontend code. The `.env` file is excluded from Git via `.gitignore`.
+
+### Running Gemini Tests
+
+**Unit tests** (no API key required, no network needed):
+
+```bash
+npm run test:gemini
+```
+
+**Manual integration test** (requires valid API key and network access):
+
+```bash
+npm run test:gemini:integration
+```
 
 ---
 
@@ -163,10 +224,13 @@ npm test
 ```text
 config/
   db.js                 PostgreSQL pg.Pool connection manager (Week 8)
+  gemini.js             Google Gemini SDK configuration and client (Week 9)
 database/
   schema.sql            PostgreSQL table definitions and indexes (Week 8)
   seed.sql              Initial dataset for testing (Week 8)
   initDb.js             Automated schema & seed runner (Week 8)
+services/
+  gemini.service.js     Reusable Gemini API service function (Week 9)
 models/
   resourceModel.js      PostgreSQL parameterized query methods (Week 8)
 controllers/
@@ -193,6 +257,8 @@ middlewares/
   errorHandler.js       Centralized error handler (Week 7)
 test/
   verify.js             Automated integration test suite (Week 8)
+  gemini.test.js        Gemini service unit tests — mocked (Week 9)
+  gemini.integration.js Gemini service manual integration test (Week 9)
 app.js                  Express application entry point (Week 7)
-.env.example            Template for environment variables (Week 8)
+.env.example            Template for environment variables (Week 8 + Week 9)
 ```
