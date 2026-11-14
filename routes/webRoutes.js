@@ -3,7 +3,8 @@ const {
   renderHomePage,
   renderResourcesPage,
   renderHistoryPage,
-  renderManagePage
+  renderManagePage,
+  renderAssistantPage
 } = require('../controllers/webController');
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.get('/find-resources', renderResourcesPage);
 router.get('/history', renderHistoryPage);
 router.get('/manage', renderManagePage);
 router.get('/manage-resources', renderManagePage);
+router.get('/assistant', renderAssistantPage);
 
 module.exports = router;

@@ -31,9 +31,17 @@ function renderManagePage(request, response) {
   });
 }
 
+function renderAssistantPage(request, response) {
+  response.render('assistant', {
+    pageTitle: 'AI Assistant',
+    activePage: 'assistant'
+  });
+}
+
 module.exports = {
   renderHomePage,
   renderResourcesPage,
   renderHistoryPage,
-  renderManagePage
+  renderManagePage,
+  renderAssistantPage
 };

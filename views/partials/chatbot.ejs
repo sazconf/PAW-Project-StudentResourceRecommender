@@ -3,15 +3,11 @@
 </button>
 <section class="chatbot-panel" id="chatbotPanel" aria-label="Study Assistant" hidden>
   <header class="chatbot-header">
-    <div><strong>Study Assistant</strong><small>Frontend-only helper</small></div>
+    <div><strong>Study Assistant</strong><small>Ask about learning resources</small></div>
     <button class="chatbot-close" type="button" aria-label="Close Study Assistant"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
   </header>
   <div class="chatbot-messages" aria-live="polite">
-    <p class="chatbot-empty">Ask about how to use SSR. An AI service is not connected yet.</p>
+    <p class="chatbot-empty">Open the full assistant to ask questions and receive resource recommendations.</p>
   </div>
-  <form class="chatbot-form">
-    <label class="visually-hidden" for="chatbotInput">Message</label>
-    <input id="chatbotInput" class="form-control" type="text" placeholder="Type a message..." autocomplete="off">
-    <button class="btn btn-primary" type="submit" aria-label="Send message"><i class="bi bi-send" aria-hidden="true"></i></button>
-  </form>
+  <a class="btn btn-primary chatbot-open-link" href="/assistant">Open AI Assistant</a>
 </section>

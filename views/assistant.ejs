@@ -1,0 +1,35 @@
+<%- include('partials/layoutStart') %>
+<main class="page-container assistant-page">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">PERSONAL STUDY COMPANION</span>
+      <h1>AI Assistant</h1>
+      <p>Ask for guidance and discover learning resources matched to your study needs.</p>
+    </div>
+  </header>
+
+  <section class="assistant-shell" aria-label="AI Assistant chat">
+    <div class="assistant-messages" id="assistantMessages" aria-live="polite" aria-atomic="false">
+      <div class="assistant-welcome">
+        <span class="assistant-avatar" aria-hidden="true"><i class="bi bi-stars"></i></span>
+        <div>
+          <strong>How can I help you learn?</strong>
+          <p>Try asking for beginner resources, study guidance, or explanations about a topic.</p>
+        </div>
+      </div>
+    </div>
+    <div id="assistantStatus" class="assistant-status" role="status" aria-live="polite" hidden></div>
+    <form class="assistant-form" id="assistantForm">
+      <label class="visually-hidden" for="assistantInput">Message for AI Assistant</label>
+      <textarea class="form-control" id="assistantInput" rows="2" maxlength="2000"
+        placeholder="Ask a study question..." autocomplete="off"></textarea>
+      <button class="btn btn-primary assistant-send" id="assistantSend" type="submit">
+        <span class="assistant-send-label"><i class="bi bi-send me-1" aria-hidden="true"></i>Send</span>
+        <span class="assistant-send-loading" hidden><span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>Thinking...</span>
+      </button>
+      <small class="assistant-hint">Press Enter to send. Use Shift+Enter for a new line.</small>
+    </form>
+  </section>
+  <%- include('partials/footer') %>
+</main>
+<%- include('partials/layoutEnd', { pageScript: '/js/assistant.js' }) %>
